@@ -1,9 +1,20 @@
-## ビルド/デバッグ
+## リビルド/デバッグ
 ```
-docker-compose up -d
+docker-compose up -d --build
 ```
 
-## djangoサーバー疎通確認
+## マイグレーション
+```
+docker-compose run python manage.py makemigrations
+docker-compose run python manage.py migrate
+```
+
+## 管理者の作成
+```
+docker-compose run python manage.py createsuperuser
+```
+
+## Djangoサーバー疎通確認
 ```
 docker exec -it mybookshelf_web_1 bash
 root@3b5b6ff69727:/code# curl http://localhost:8000
@@ -15,7 +26,12 @@ root@3b5b6ff69727:/code# exit
 docker-compose logs
 ```
 
-## django log確認
+## 構文チェック
+```
+docker container exec -it <CONTAINER ID> python manage.py check
+```
+
+## Django log確認
 ```
 docker ps
 docker logs <CONTAINER ID>
