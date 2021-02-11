@@ -32,7 +32,7 @@ class Migration(migrations.Migration):
                 ('money', models.IntegerField(help_text='単位は日本円', verbose_name='金額')),
                 ('quantity', models.IntegerField(default=0, verbose_name='数量')),
                 ('memo', models.CharField(max_length=500, verbose_name='メモ')),
-                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='MyBookshelf.Category', verbose_name='カテゴリ')),
+                ('category', models.ForeignKey(on_delete=django.db.models.deletion.PROTECT, to='app.Category', verbose_name='カテゴリ')),
             ],
             options={
                 'verbose_name': '家計簿',

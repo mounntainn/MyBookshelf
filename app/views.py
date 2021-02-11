@@ -5,7 +5,7 @@ from .models import Category, Kakeibo
  
 class KakeiboListView(ListView):
    model = Kakeibo
-   template_name = 'MyBookshelf/kakeibo_list.html'
+   template_name = 'kakeibo_list.html'
  
    #家計簿テーブルの全データを取得するメソッドを定義
    def queryset(self):
