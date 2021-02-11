@@ -3,7 +3,7 @@
 docker-compose up -d
 ```
 
-## djangoサーバー疎通確認
+## Djangoサーバー疎通確認
 ```
 docker exec -it mybookshelf_web_1 bash
 root@3b5b6ff69727:/code# curl http://localhost:8000
@@ -15,7 +15,12 @@ root@3b5b6ff69727:/code# exit
 docker-compose logs
 ```
 
-## django log確認
+## 構文チェック
+```
+docker container exec -it <CONTAINER ID> python manage.py check
+```
+
+## Django log確認
 ```
 docker ps
 docker logs <CONTAINER ID>
