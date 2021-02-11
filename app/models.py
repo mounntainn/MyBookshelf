@@ -1,12 +1,40 @@
 from django.db import models
 from datetime import datetime
  
+class BaseModel(models.Model):
+ 
+    class Meta:
+        verbose_name ="ベースモデル"
+        verbose_name_plural ="ベースモデル"
+      
+    #columns
+    updated_by = models.BigIntegerField("更新者")
+    updated_at = models.DateField("更新日", default=datetime.now)
+    created_by = models.BigIntegerField("登録者")
+    created_at = models.DateField("登録日", default=datetime.now)
+    deleted_by = models.DateField("削除日", default=datetime.now)
+ 
+    def __str__(self):
+        return self.deleted_by
+
+class UserMaster(BaseModel):
+ 
+    class Meta:
+        verbose_name ="ユーザーマスタ"
+        verbose_name_plural ="ユーザーマスタ"
+      
+    #columns
+    user_name = models.SlugField("ユーザー名", default="NO NAME")
+ 
+    def __str__(self):
+        return self.user_id 
+
 class Category(models.Model):
  
     class Meta:
         verbose_name ="カテゴリ"
         verbose_name_plural ="カテゴリ"
-      
+
     #カラム名の定義
     category_name = models.CharField(max_length=255,unique=True)
  
