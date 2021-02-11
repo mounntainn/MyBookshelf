@@ -1,6 +1,6 @@
-## ビルド/デバッグ
+## リビルド/デバッグ
 ```
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 ## Djangoサーバー疎通確認
