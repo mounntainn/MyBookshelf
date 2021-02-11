@@ -3,6 +3,17 @@
 docker-compose up -d --build
 ```
 
+## マイグレーション
+```
+docker-compose run python manage.py makemigrations
+docker-compose run python manage.py migrate
+```
+
+## 管理者の作成
+```
+docker-compose run python manage.py createsuperuser
+```
+
 ## Djangoサーバー疎通確認
 ```
 docker exec -it mybookshelf_web_1 bash
