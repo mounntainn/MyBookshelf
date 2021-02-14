@@ -5,13 +5,13 @@ docker-compose up -d --build
 
 ## マイグレーション
 ```
-docker container exec -it <CONTAINER ID> python3 manage.py makemigrations
-docker container exec -it <CONTAINER ID> python3 manage.py migrate
+docker container exec -it web-container python3 manage.py makemigrations
+docker container exec -it web-container python3 manage.py migrate
 ```
 
 ## 管理者の作成
 ```
-docker container exec -it <CONTAINER ID> python3 manage.py createsuperuser
+docker container exec -it web-container python3 manage.py createsuperuser
 ```
 
 ## Djangoサーバー疎通確認
@@ -28,13 +28,13 @@ docker-compose logs
 
 ## 構文チェック
 ```
-docker container exec -it <CONTAINER ID> python manage.py check
+docker container exec -it web-container python manage.py check
 ```
 
 ## Django log確認
 ```
 docker ps
-docker logs <CONTAINER ID>
+docker logs web-container
 ```
 
 ## 終了
