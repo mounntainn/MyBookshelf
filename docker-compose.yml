@@ -6,19 +6,19 @@ services:
     ports: 
       - "5432:5432"
     volumes:
-      - /etc/localtime:/etc/localtime:ro
+      - "db-data:/var/lib/postgresql/data"
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       PGTZ: Asia/Tokyo
-    
   
   redis:
     image: redis:alpine
     ports:
       - "6379:6379"
-    tty: true
+    volumes:
+       - redis-data:/data
     environment:
       TZ: Asia/Tokyo
 
@@ -32,7 +32,14 @@ services:
     volumes:
       - .:/code
     ports:
-      - "8000:8000"
+      - "80:8000"
     depends_on:
       - db
       - redis
+
+volumes: 
+  db-data:
+    driver: local
+
+  redis-data:
+    driver: local
