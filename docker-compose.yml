@@ -7,6 +7,7 @@ services:
       - "5432:5432"
     volumes:
       - "db-data:/var/lib/postgresql/data"
+    restart: always
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
@@ -19,6 +20,7 @@ services:
       - "6379:6379"
     volumes:
        - redis-data:/data
+    restart: always
     tty: true
     environment:
       TZ: Asia/Tokyo
@@ -33,6 +35,7 @@ services:
       - .:/code
     ports:
       - "80:8000"
+    restart: always
     depends_on:
       - db
       - redis
